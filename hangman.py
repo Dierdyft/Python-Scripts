@@ -1,6 +1,7 @@
-import random
+;import random
+import os
 
-palabras = ["ciudad", "palacio", "urbanizacion", "festival"]
+palabras = ["ciudad", "palacio", "urbanizacion", "festival", "zapato", "colegio", "tomillotiempillo"]
 
 espaciosPalabra = []
 vidas = 5
@@ -20,12 +21,12 @@ print("Vidas:", vidas)
 
 print("Dame una letra, si no pertenece a la palabra perderas una vida")
 
-#Inicio del juego.k
+#Inicio del juego
 while True:
     letra = input()
 
     #Funcion Principal
-    def  info():
+    def info():
         indeX = 0
         for m in palabraSeparada:
             if m in letra:
@@ -38,25 +39,33 @@ while True:
             exit()
     
     #Si tiene vidas
-    if(vidas > 1):
-        #No le ha dado la letra antes
-        if(letra not in espaciosPalabra):
-            #Si la letra esta
-            if(letra in palabraSeparada):
-                print("¡La letra pertenece a la palabra!")
-                info()
-            #Si la letra NO esta
-            elif(letra not in palabraSeparada):
-                print("¡La letra NO pertenece a la palabra!")
-                vidas -= 1
-                info()
-        
-        #Ya le habidado esa letra
+    if(vidas > 0):
+        #Si "letra" es igual a la palabra
+        if(letra == palabra):
+            print("¡Haz ganado, felicidades!")
+            exit()
         else:
-            print("¡Ya me haz dado esa letra con anterioridad!")
-            info()
-        
-    #Si NO tiene vidas
+            #No le ha dado la letra antes
+            if(letra not in espaciosPalabra):
+                #Si la letra esta
+                if letra in palabraSeparada:
+                    os.system("clear")
+                    print("La letra pertenece a la palabra")
+                    info()
+                #Si la letra NO esta
+                elif(letra not in palabraSeparada):
+                    print("La letra NO pertenece a la palabra")
+                    vidas -= 1
+                    print("Vidas: " + str(vidas))
+            #Ya le habidado esa letra
+            else:
+                if(letra == "_"):
+                    print("Esa letra no es valida")
+                else:
+                    os.system("clear")
+                    print("Ya me haz dado esa letra con anterioridad")
+                    info()
+        #Si NO tiene vidas
     else:
-        print("Ya no tienes vidas, perdiste")
+        print("¡Ya no tienes vidas, perdiste!")
         exit()
