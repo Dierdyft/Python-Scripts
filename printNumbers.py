@@ -5,7 +5,7 @@ newThings = []
 
 #Divide los elementos que contengan "-"
 for element in things:
-    newThings.append(element.split("-"))
+    newThings.append(element.strip().split("-"))
 
 print("Estoy procesando los numeros")
 try:
