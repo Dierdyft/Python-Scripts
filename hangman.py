@@ -1,4 +1,4 @@
-;import random
+import random
 import os
 
 palabras = ["ciudad", "palacio", "urbanizacion", "festival", "zapato", "colegio", "tomillotiempillo"]
