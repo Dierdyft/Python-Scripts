@@ -1,4 +1,4 @@
-things = input("Pon los numeros a los cuales recorre por su rango\nUn ejemplo: 1-3, 4-8, 9-12\n")
+things = input("Pon los numeros a los cuales recorrer por su rango\nEjemplo:\nEntrada: 1-3, 4-8, 9-12\nSalida: 1, 2, 3 | 4, 5, 6, 7, 8 | 9, 10, 11, 12\n")
 
 things = things.split(",")
 newThings = []
