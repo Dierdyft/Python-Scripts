@@ -8,11 +8,11 @@ def dateNow():
 #Pasar ms a HMS
 def millis(value):
     millis = int(value)
-    seconds=(millis/1000)%60
+    seconds = (millis/1000)%60
     seconds = int(seconds)
-    minutes=(millis/(1000*60))%60
+    minutes = (millis/(1000*60))%60
     minutes = int(minutes)
-    hours=(millis/(1000*60*60))%24
+    hours = (millis/(1000*60*60))%24
     return f"{int(minutes)} minutos y {int(seconds)} segundos"
 
 fileExist = os.path.exists("./economia.json")
@@ -24,15 +24,15 @@ if(fileExist == False):
         json.dump(propiedades, datos)
         print("Se ha creado el archivo economia.json")
 
-else:
-    with open("./economia.json", "r") as datos:
-        data = json.load(datos)
-        cartera = data["cartera"]
-        banco = data["banco"]
-        trabajo = []
-        if int(dateNow()) >= data["trabajar"]:
-            trabajo = "Ya puedes trabajar"
-        else:
-            trabajo = millis(data["trabajar"] - dateNow())
+with open("./economia.json", "r") as datos:
+    data = json.load(datos)
+    cartera = data["cartera"]
+    banco = data["banco"]
+    trabajo = ""
     
-        print(f"Cartera: {cartera}\nBanco: {banco}\nTrabajo: Dentro de {trabajo}")
+    if int(dateNow()) >= data["trabajar"]:
+        trabajo = "Ya puedes trabajar"
+    else:
+        trabajo = "Dentro de " + millis(data["trabajar"] - dateNow())
+    
+    print(f"Cartera: {cartera}\nBanco: {banco}\nTrabajo: {trabajo}")
