@@ -9,7 +9,7 @@ words = []
 #Funcion del juego
 def game(word, lives):
     
-    print("Intenta adivinar la palabra")
+    print(f"Intenta adivinar la palabra. La palabra tiene {len(word)} letras")
     
     attempts = 0
     
